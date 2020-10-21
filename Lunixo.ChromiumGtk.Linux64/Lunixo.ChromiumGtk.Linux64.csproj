@@ -1,0 +1,104 @@
+<Project Sdk="Microsoft.NET.Sdk" DefaultTargets="Pack">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <PackageId>Lunixo.ChromiumGtk.Linux64</PackageId>
+        <Version>2.0.4147.3</Version>
+        <Authors>Lunixo</Authors>
+        <Company>Lunixo</Company>
+        <PackageTags>CEF;Chromium;GTK;GtkSharp</PackageTags>
+        <Description>
+            Chromium Embedded Framework (CEF) WebView for GtkSharp binaries for Linux x64
+        </Description>
+        <IncludeBuildOutput>true</IncludeBuildOutput>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CustomBeforePack</TargetsForTfmSpecificBuildOutput>
+    </PropertyGroup>
+        
+    <Target Name="CustomBeforePack">
+        <Exec ConsoleToMSBuild="true" IgnoreExitCode="false" Command="bash -c &quot;chmod +x get-binaries.sh &amp;&amp; ./get-binaries.sh&quot;" />
+        <ItemGroup>
+            <TfmSpecificPackageFile Include="binary/cef.pak">
+                <PackagePath>binaries</PackagePath>
+            </TfmSpecificPackageFile>
+
+            <TfmSpecificPackageFile Include="binary/cef_100_percent.pak">
+                <PackagePath>binaries</PackagePath>
+            </TfmSpecificPackageFile>
+
+            <TfmSpecificPackageFile Include="binary/cef_200_percent.pak">
+                <PackagePath>binaries</PackagePath>
+            </TfmSpecificPackageFile>
+
+            <TfmSpecificPackageFile Include="binary/cef_extensions.pak">
+                <PackagePath>binaries</PackagePath>
+            </TfmSpecificPackageFile>
+
+            <TfmSpecificPackageFile Include="binary/cefsimple">
+                <PackagePath>binaries</PackagePath>
+            </TfmSpecificPackageFile>
+
+            <TfmSpecificPackageFile Include="binary/chrome-sandbox">
+                <PackagePath>binaries</PackagePath>
+            </TfmSpecificPackageFile>
+
+            <TfmSpecificPackageFile Include="binary/devtools_resources.pak">
+                <PackagePath>binaries</PackagePath>
+            </TfmSpecificPackageFile>
+
+            <TfmSpecificPackageFile Include="binary/icudtl.dat">
+                <PackagePath>binaries</PackagePath>
+            </TfmSpecificPackageFile>
+
+            <TfmSpecificPackageFile Include="binary/libcef.so">
+                <PackagePath>binaries</PackagePath>
+            </TfmSpecificPackageFile>
+
+            <TfmSpecificPackageFile Include="binary/libEGL.so">
+                <PackagePath>binaries</PackagePath>
+            </TfmSpecificPackageFile>
+
+            <TfmSpecificPackageFile Include="binary/libGLESv2.so">
+                <PackagePath>binaries</PackagePath>
+            </TfmSpecificPackageFile>
+
+            <TfmSpecificPackageFile Include="binary/snapshot_blob.bin">
+                <PackagePath>binaries</PackagePath>
+            </TfmSpecificPackageFile>
+
+            <TfmSpecificPackageFile Include="binary/v8_context_snapshot.bin">
+                <PackagePath>binaries</PackagePath>
+            </TfmSpecificPackageFile>
+
+            <TfmSpecificPackageFile Include="binary/locales/en-US.pak">
+                <PackagePath>binaries/locales</PackagePath>
+            </TfmSpecificPackageFile>
+
+            <TfmSpecificPackageFile Include="binary/swiftshader/libEGL.so">
+                <PackagePath>binaries/swiftshader</PackagePath>
+            </TfmSpecificPackageFile>
+
+            <TfmSpecificPackageFile Include="binary/swiftshader/libGLESv2.so">
+                <PackagePath>binaries/swiftshader</PackagePath>
+            </TfmSpecificPackageFile>
+        </ItemGroup>
+    </Target>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\Lunixo.ChromiumGtk\Lunixo.ChromiumGtk.csproj">
+      </ProjectReference>
+    </ItemGroup>
+    
+    <ItemGroup>
+        <None Include="NuGet\Lunixo.ChromiumGtk.Linux64.targets">
+            <Pack>true</Pack>
+            <PackagePath>build</PackagePath>
+        </None>
+        
+        <None Remove="binary\**" />
+        <Compile Remove="binary\**" />
+        <EmbeddedResource Remove="binary\**" />
+    </ItemGroup>
+</Project>

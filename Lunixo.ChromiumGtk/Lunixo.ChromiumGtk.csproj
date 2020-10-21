@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <AssemblyName>Lunixo.ChromiumGtk</AssemblyName>
+        <RootNamespace>Lunixo.ChromiumGtk</RootNamespace>
+        <PackageId>Lunixo.ChromiumGtk</PackageId>
+        <IncludeBuildOutput>true</IncludeBuildOutput>
+        <Version>2.0.4147.3</Version>
+        <Authors>Lunixo</Authors>
+        <Company>Lunixo</Company>
+        <PackageTags>CEF;Chromium;GTK;GtkSharp</PackageTags>
+        <Description>
+            Chromium Embedded Framework (CEF) WebView for GtkSharp
+        </Description>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="GtkSharp" Version="3.22.25.128" />
+      <PackageReference Include="System.Reactive" Version="4.4.1" />
+    </ItemGroup>
+        
+    <ItemGroup>
+      <Folder Include="CefGlue" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Compile Remove="CefGlue\Wrapper\MessageRouter\CefMessageRouterRendererSide.cs" />
+      <Compile Remove="CefGlue\Wrapper\MessageRouter\CefMessageRouterBrowserSide.cs" />
+      <Compile Remove="binary\**" />
+    </ItemGroup>
+</Project>
