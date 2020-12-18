@@ -9,8 +9,8 @@ ChromiumGtk is a WebView for GtkSharp using Chromium Embedded Framework (CEF) an
 
 ## Dependencies
 
-* [GtkSharp 3.22](https://github.com/GtkSharp/GtkSharp)
-* [CEF 84.0.4147.89](https://bitbucket.org/chromiumembedded/cef/)
+* [GtkSharp](https://github.com/GtkSharp/GtkSharp)
+* [CEF](https://bitbucket.org/chromiumembedded/cef/)
 
 ## Installation
 
