@@ -6,7 +6,7 @@
         <RootNamespace>Lunixo.ChromiumGtk</RootNamespace>
         <PackageId>Lunixo.ChromiumGtk</PackageId>
         <IncludeBuildOutput>true</IncludeBuildOutput>
-        <Version>2.0.4147.3</Version>
+        <Version>2.0.4280.1</Version>
         <Authors>Lunixo</Authors>
         <Company>Lunixo</Company>
         <PackageTags>CEF;Chromium;GTK;GtkSharp</PackageTags>
@@ -30,6 +30,7 @@
         
     <ItemGroup>
       <Folder Include="CefGlue" />
+      <Folder Include="CefGlue\Properties" />
     </ItemGroup>
     
     <ItemGroup>

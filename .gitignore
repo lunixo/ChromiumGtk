@@ -1,8 +1,8 @@
 /Lunixo.ChromiumGtk/bin
 /Lunixo.ChromiumGtk/obj
-/Lunixo.ChromiumGtk.Lunix64/bin
-/Lunixo.ChromiumGtk.Lunix64/obj
-/Lunixo.ChromiumGtk.Lunix64/binary
+/Lunixo.ChromiumGtk.Linux64/bin
+/Lunixo.ChromiumGtk.Linux64/obj
+/Lunixo.ChromiumGtk.Linux64/binary
 /.idea/
 
 ## Ignore Visual Studio temporary files, build results, and
