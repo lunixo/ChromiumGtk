@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <PackageId>Lunixo.ChromiumGtk.Linux64</PackageId>
-        <Version>2.0.4280.1</Version>
+        <Version>2.0.4324.1</Version>
         <Authors>Lunixo</Authors>
         <Company>Lunixo</Company>
         <PackageTags>CEF;Chromium;GTK;GtkSharp</PackageTags>

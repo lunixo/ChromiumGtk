@@ -8,6 +8,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lunixo.ChromiumGtk.Examples
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lunixo.ChromiumGtk.Examples.Container", "Lunixo.ChromiumGtk.Examples.Container\Lunixo.ChromiumGtk.Examples.Container.csproj", "{D431ED85-C6B3-43EA-8ECB-8739CD2BB98E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lunixo.ChromiumGtk.Examples.Simple", "Lunixo.ChromiumGtk.Examples.Simple\Lunixo.ChromiumGtk.Examples.Simple.csproj", "{6481B761-29DE-425D-A97A-64593F60668B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,8 +28,13 @@ Global
 		{D431ED85-C6B3-43EA-8ECB-8739CD2BB98E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D431ED85-C6B3-43EA-8ECB-8739CD2BB98E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D431ED85-C6B3-43EA-8ECB-8739CD2BB98E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6481B761-29DE-425D-A97A-64593F60668B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6481B761-29DE-425D-A97A-64593F60668B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6481B761-29DE-425D-A97A-64593F60668B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6481B761-29DE-425D-A97A-64593F60668B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D431ED85-C6B3-43EA-8ECB-8739CD2BB98E} = {6B6BB187-34EA-4337-9EEE-41B0D2EBE132}
+		{6481B761-29DE-425D-A97A-64593F60668B} = {6B6BB187-34EA-4337-9EEE-41B0D2EBE132}
 	EndGlobalSection
 EndGlobal

@@ -189,13 +189,6 @@ namespace Xilium.CefGlue
         H2_OR_QUIC_REQUIRED = -31,
 
         /// <summary>
-        /// The request was blocked because it is a private network request coming from
-        /// an insecure context in a less private IP address space. This is used to
-        /// enforce CORS-RFC1918: https://wicg.github.io/cors-rfc1918.
-        /// </summary>
-        INSECURE_PRIVATE_NETWORK_REQUEST = -32,
-
-        /// <summary>
         /// A connection was closed (corresponding to a TCP FIN).
         /// </summary>
         CONNECTION_CLOSED = -100,
@@ -1276,10 +1269,12 @@ namespace Xilium.CefGlue
 
         /// <summary>
         /// When handling a Trust Tokens protocol operation-executing request, the system
-        /// found that the request's desired Trust Tokens results were already present in
-        /// a local cache; as a result, the main request was cancelled.
+        /// was able to execute the request's Trust Tokens operation without sending the
+        /// request to its destination: for instance, the results could have been present
+        /// in a local cache (for redemption) or the operation could have been diverted
+        /// to a local provider (for "platform-provided" issuance).
         /// </summary>
-        TRUST_TOKEN_OPERATION_CACHE_HIT = -507,
+        TRUST_TOKEN_OPERATION_SUCCESS_WITHOUT_SENDING_REQUEST = -507,
 
         // *** Code -600 is reserved (was FTP_PASV_COMMAND_FAILED). ***
 
