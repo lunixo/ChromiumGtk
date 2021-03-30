@@ -6,18 +6,14 @@ namespace Lunixo.ChromiumGtk.Core
 {
     public class WebClient : CefClient
     {
-        public static bool DumpProcessMessages { get; set; }
         private readonly LifeSpanHandler _lifeSpanHandler;
-        private readonly DisplayHandler _displayHandler;
-        private readonly LoadHandler _loadHandler;
 
         public WebClient(WebBrowser core)
         {
             _lifeSpanHandler = new LifeSpanHandler(core);
-            _displayHandler = new DisplayHandler(core);
-            _loadHandler = new LoadHandler(core);
         }
 
+        public static bool DumpProcessMessages { get; set; }
         public CefKeyboardHandler KeyboardHandler { get; set; }
         public CefContextMenuHandler ContextMenuHandler { get; set; }
         public CefFindHandler FindHandler { get; set; }
@@ -29,7 +25,9 @@ namespace Lunixo.ChromiumGtk.Core
         public CefRequestHandler RequestHandler { get; set; }
         public CefJSDialogHandler JSDialogHandler { get; set; }
         public CefDialogHandler DialogHandler { get; set; }
-        
+        public CefLoadHandler LoadHandler { get; set; }
+        public CefDisplayHandler DisplayHandler { get; set; }
+
         protected override CefLifeSpanHandler GetLifeSpanHandler()
         {
             return _lifeSpanHandler;
@@ -37,12 +35,12 @@ namespace Lunixo.ChromiumGtk.Core
 
         protected override CefDisplayHandler GetDisplayHandler()
         {
-            return _displayHandler;
+            return DisplayHandler;
         }
-
+        
         protected override CefLoadHandler GetLoadHandler()
         {
-            return _loadHandler;
+            return LoadHandler;
         }
 
         protected override CefKeyboardHandler GetKeyboardHandler()

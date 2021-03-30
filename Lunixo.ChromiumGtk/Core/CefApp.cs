@@ -5,21 +5,28 @@ namespace Lunixo.ChromiumGtk.Core
 {
     internal sealed class CefApp : Xilium.CefGlue.CefApp
     {
-        private readonly CefBrowserProcessHandler _browserProcessHandler = new BrowserProcessHandler();
         private readonly CefRenderProcessHandler _renderProcessHandler = new RenderProcessHandler();
-
+        
+        public CefBrowserProcessHandler BrowserProcessHandler { get; set; }
+        public CefResourceBundleHandler ResourceBundleHandler { get; set; }
+        
         protected override void OnBeforeCommandLineProcessing(string processType, CefCommandLine commandLine)
         {
+        }
+        
+        protected override CefRenderProcessHandler GetRenderProcessHandler()
+        {
+            return _renderProcessHandler;
         }
 
         protected override CefBrowserProcessHandler GetBrowserProcessHandler()
         {
-            return _browserProcessHandler;
+            return BrowserProcessHandler;
         }
 
-        protected override CefRenderProcessHandler GetRenderProcessHandler()
+        protected override CefResourceBundleHandler GetResourceBundleHandler()
         {
-            return _renderProcessHandler;
+            return ResourceBundleHandler;
         }
     }
 }

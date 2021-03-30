@@ -1,5 +1,4 @@
 using System;
-using Lunixo.ChromiumGtk.EventArgs;
 using Xilium.CefGlue;
 
 namespace Lunixo.ChromiumGtk.Core
@@ -31,38 +30,6 @@ namespace Lunixo.ChromiumGtk.Core
             handler?.Invoke(this, new System.EventArgs());
         }
         
-        public event EventHandler<TitleChangedEventArgs> TitleChanged;
-
-        internal void OnTitleChanged(string title)
-        {
-            var handler = TitleChanged;
-            handler?.Invoke(this, new TitleChangedEventArgs(title));
-        }
-
-        public event EventHandler<AddressChangedEventArgs> AddressChanged;
-
-        internal void OnAddressChanged(string address)
-        {
-            var handler = AddressChanged;
-            handler?.Invoke(this, new AddressChangedEventArgs(address));
-        }
-
-        public event EventHandler<TargetUrlChangedEventArgs> TargetUrlChanged;
-
-        internal void OnTargetUrlChanged(string targetUrl)
-        {
-            var handler = TargetUrlChanged;
-            handler?.Invoke(this, new TargetUrlChangedEventArgs(targetUrl));
-        }
-
-        public event EventHandler<LoadingStateChangedEventArgs> LoadingStateChanged;
-
-        internal void OnLoadingStateChanged(bool isLoading, bool canGoBack, bool canGoForward)
-        {
-            var handler = LoadingStateChanged;
-            handler?.Invoke(this, new LoadingStateChangedEventArgs(isLoading, canGoBack, canGoForward));
-        }
-
         public void Dispose()
         {
             if (CefBrowser != null)
