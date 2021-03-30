@@ -18,6 +18,18 @@ namespace Lunixo.ChromiumGtk.Core
             _loadHandler = new LoadHandler(core);
         }
 
+        public CefKeyboardHandler KeyboardHandler { get; set; }
+        public CefContextMenuHandler ContextMenuHandler { get; set; }
+        public CefFindHandler FindHandler { get; set; }
+        public CefAudioHandler AudioHandler { get; set; }
+        public CefDragHandler DragHandler { get; set; }
+        public CefRenderHandler RenderHandler { get; set; }
+        public CefFocusHandler FocusHandler { get; set; }
+        public CefDownloadHandler DownloadHandler { get; set; }
+        public CefRequestHandler RequestHandler { get; set; }
+        public CefJSDialogHandler JSDialogHandler { get; set; }
+        public CefDialogHandler DialogHandler { get; set; }
+        
         protected override CefLifeSpanHandler GetLifeSpanHandler()
         {
             return _lifeSpanHandler;
@@ -33,6 +45,61 @@ namespace Lunixo.ChromiumGtk.Core
             return _loadHandler;
         }
 
+        protected override CefKeyboardHandler GetKeyboardHandler()
+        {
+            return KeyboardHandler;
+        }
+
+        protected override CefContextMenuHandler GetContextMenuHandler()
+        {
+            return ContextMenuHandler;
+        }
+
+        protected override CefDialogHandler GetDialogHandler()
+        {
+            return DialogHandler;
+        }
+
+        protected override CefJSDialogHandler GetJSDialogHandler()
+        {
+            return JSDialogHandler;
+        }
+
+        protected override CefRequestHandler GetRequestHandler()
+        {
+            return RequestHandler;
+        }
+
+        protected override CefDownloadHandler GetDownloadHandler()
+        {
+            return DownloadHandler;
+        }
+
+        protected override CefFocusHandler GetFocusHandler()
+        {
+            return FocusHandler;
+        }
+
+        protected override CefRenderHandler GetRenderHandler()
+        {
+            return RenderHandler;
+        }
+
+        protected override CefDragHandler GetDragHandler()
+        {
+            return DragHandler;
+        }
+
+        protected override CefAudioHandler GetAudioHandler()
+        {
+            return AudioHandler;
+        }
+
+        protected override CefFindHandler GetFindHandler()
+        {
+            return FindHandler;
+        }
+        
         protected override bool OnProcessMessageReceived(CefBrowser browser, CefFrame frame, CefProcessId sourceProcess, CefProcessMessage message)
         {
             if (DumpProcessMessages)
