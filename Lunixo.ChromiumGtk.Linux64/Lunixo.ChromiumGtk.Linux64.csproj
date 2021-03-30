@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <PackageId>Lunixo.ChromiumGtk.Linux64</PackageId>
-        <Version>2.0.4324.1</Version>
+        <Version>2.0.4430.1-beta</Version>
         <Authors>Lunixo</Authors>
         <Company>Lunixo</Company>
         <PackageTags>CEF;Chromium;GTK;GtkSharp</PackageTags>
@@ -20,22 +20,18 @@
     <Target Name="CustomBeforePack">
         <Exec ConsoleToMSBuild="true" IgnoreExitCode="false" Command="bash -c &quot;chmod +x get-binaries.sh &amp;&amp; ./get-binaries.sh&quot;" />
         <ItemGroup>
-            <TfmSpecificPackageFile Include="binary/cef.pak">
+            <TfmSpecificPackageFile Include="binary/resources.pak">
                 <PackagePath>binaries</PackagePath>
             </TfmSpecificPackageFile>
 
-            <TfmSpecificPackageFile Include="binary/cef_100_percent.pak">
+            <TfmSpecificPackageFile Include="binary/chrome_100_percent.pak">
                 <PackagePath>binaries</PackagePath>
             </TfmSpecificPackageFile>
 
-            <TfmSpecificPackageFile Include="binary/cef_200_percent.pak">
+            <TfmSpecificPackageFile Include="binary/chrome_200_percent.pak">
                 <PackagePath>binaries</PackagePath>
             </TfmSpecificPackageFile>
-
-            <TfmSpecificPackageFile Include="binary/cef_extensions.pak">
-                <PackagePath>binaries</PackagePath>
-            </TfmSpecificPackageFile>
-
+            
             <TfmSpecificPackageFile Include="binary/cefsimple">
                 <PackagePath>binaries</PackagePath>
             </TfmSpecificPackageFile>
@@ -43,11 +39,7 @@
             <TfmSpecificPackageFile Include="binary/chrome-sandbox">
                 <PackagePath>binaries</PackagePath>
             </TfmSpecificPackageFile>
-
-            <TfmSpecificPackageFile Include="binary/devtools_resources.pak">
-                <PackagePath>binaries</PackagePath>
-            </TfmSpecificPackageFile>
-
+            
             <TfmSpecificPackageFile Include="binary/icudtl.dat">
                 <PackagePath>binaries</PackagePath>
             </TfmSpecificPackageFile>
