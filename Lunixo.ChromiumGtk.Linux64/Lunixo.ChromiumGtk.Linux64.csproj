@@ -11,7 +11,7 @@
             Chromium Embedded Framework (CEF) WebView for GtkSharp binaries for Linux x64
         </Description>
         <IncludeBuildOutput>true</IncludeBuildOutput>
-        <PackageVersion>2.0.4430.2-beta</PackageVersion>
+        <PackageVersion>2.0.4430.3-beta</PackageVersion>
     </PropertyGroup>
 
     <PropertyGroup>

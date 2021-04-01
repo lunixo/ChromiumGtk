@@ -5,7 +5,7 @@ using DateTime = System.DateTime;
 
 namespace Lunixo.ChromiumGtk.Core
 {
-    public class Runtime : IDisposable
+    public class Runtime
     {
         private static bool _initialized;
         
@@ -18,18 +18,18 @@ namespace Lunixo.ChromiumGtk.Core
             _commandLineArgs = commandLineArgs ?? Environment.GetCommandLineArgs();
         }
         
-        public void Initialize()
+        public void Initialize(Xilium.CefGlue.CefApp customApp = null)
         {
             if (_initialized)
             {
                 throw new Exception("Only one runtime can be initialized.");
             }
+            
             _initialized = true;
             
             CefRuntime.Load();
             var mainArgs = new CefMainArgs(_commandLineArgs);
-            var cefApp = new CefApp();
-            CefRuntime.Initialize(mainArgs, _cefSettings, cefApp, IntPtr.Zero);
+            CefRuntime.Initialize(mainArgs, _cefSettings, customApp ?? new CefApp(), IntPtr.Zero);
         }
 
         public void RunMessageLoop()
@@ -61,8 +61,9 @@ namespace Lunixo.ChromiumGtk.Core
             };
         }
 
-        public void Dispose()
+        public void Shutdown()
         {
+            CefRuntime.Shutdown();
         }
     }
 }
