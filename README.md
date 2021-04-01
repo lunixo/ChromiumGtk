@@ -25,7 +25,7 @@ dotnet add package Lunixo.ChromiumGtk.Linux64
 ```C#
 static void Main()
 {
-    using var runtime = new Runtime();
+    var runtime = new Runtime();
     runtime.Initialize();
     Gtk.Application.Init();
     
@@ -45,6 +45,7 @@ static void Main()
     window.ShowAll();
     
     runtime.RunMessageLoop();
+    runtime.Shutdown();
 }
 ```
 
