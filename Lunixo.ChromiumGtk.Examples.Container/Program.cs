@@ -16,11 +16,11 @@
     {
         private static void Main(string[] args)
         {
-            using var runtime = new Runtime(new CefSettings
+            var runtime = new Runtime(new CefSettings
             {
                 MultiThreadedMessageLoop = false,
                 LogSeverity = CefLogSeverity.Fatal,
-                LogFile = string.Format("logs_{0:yyyyMMdd}.log", DateTime.Now),
+                LogFile = $"logs_{DateTime.Now:yyyyMMdd}.log",
                 RemoteDebuggingPort = 20480,
                 LocalesDirPath = Path.Combine(Environment.CurrentDirectory, "locales"),
                 BrowserSubprocessPath = Path.Combine(Environment.CurrentDirectory, "cefsimple"),
@@ -51,8 +51,6 @@
 
             using var webView = new WebView();
             webView.LoadUrl("https://dotnet.microsoft.com/");
-            webView.Browser.TitleChanged += (sender, eventArgs) => { Console.WriteLine("TitleChanged: " + eventArgs.Title); };
-            webView.Browser.LoadingStateChanged += (sender, eventArgs) => {  Console.WriteLine("Loading: " + eventArgs.Loading); }; 
             
             window.Add(webView);
             window.ShowAll();

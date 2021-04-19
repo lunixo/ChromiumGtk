@@ -11,7 +11,7 @@ namespace Lunixo.ChromiumGtk.Examples.Simple
         static void Main()
         {
             Console.ReadLine();
-            using var runtime = new Runtime(CreateDefaultSettings(), new string[] { });
+            var runtime = new Runtime(CreateDefaultSettings(), new string[] { });
             Gtk.Application.Init();
 
             runtime.Initialize();
@@ -30,6 +30,7 @@ namespace Lunixo.ChromiumGtk.Examples.Simple
             window.Add(webView);
             window.ShowAll();
             runtime.RunMessageLoop();
+            runtime.Shutdown();
         }
         
         public static CefSettings CreateDefaultSettings() => new CefSettings()
