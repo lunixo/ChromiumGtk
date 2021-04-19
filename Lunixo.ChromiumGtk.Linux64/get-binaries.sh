@@ -1,6 +1,6 @@
 #!/bin/bash
 
-URL="https://cef-builds.spotifycdn.com/cef_binary_90.0.4%2Bgdc12a89%2Bchromium-90.0.4430.30_linux64_beta_client.tar.bz2"
+URL="https://cef-builds.spotifycdn.com/cef_binary_90.5.4%2Bgc6a4331%2Bchromium-90.0.4430.72_linux64_client.tar.bz2"
 
 echo "Downloading CEF ${URL}"
 
