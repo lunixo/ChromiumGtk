@@ -10,7 +10,6 @@ namespace Lunixo.ChromiumGtk.Examples.Simple
     {
         static void Main()
         {
-            Console.ReadLine();
             var runtime = new Runtime(CreateDefaultSettings(), new string[] { });
             Gtk.Application.Init();
 
