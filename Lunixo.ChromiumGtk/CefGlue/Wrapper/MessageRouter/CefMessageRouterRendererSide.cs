@@ -387,7 +387,9 @@
             args.SetString(4, request);
             args.SetBool(5, persistent);
 
-            browser.SendProcessMessage(CefProcessId.Browser, message);
+            var frame = browser.GetFrame(frameId);
+            if (frame.IsValid)
+                browser.GetFrame(frameId).SendProcessMessage(CefProcessId.Browser, message);
 
             args.Dispose();
             message.Dispose();
@@ -442,7 +444,10 @@
                 args.SetInt(0, contextId);
                 args.SetInt(1, requestId);
 
-                browser.SendProcessMessage(CefProcessId.Browser, message);
+                var frame = browser.GetFrame(frameId);
+                if (frame.IsValid)
+                    frame.SendProcessMessage(CefProcessId.Browser, message);
+
                 return true;
             }
 

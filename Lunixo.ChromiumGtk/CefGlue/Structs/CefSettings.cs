@@ -120,14 +120,14 @@
         public string RootCachePath { get; set; }
 
         /// <summary>
-        /// The location where user data such as spell checking dictionary files will
-        /// be stored on disk. If this value is empty then the default
-        /// platform-specific user data directory will be used ("~/.cef_user_data"
-        /// directory on Linux, "~/Library/Application Support/CEF/User Data" directory
-        /// on Mac OS X, "Local Settings\Application Data\CEF\User Data" directory
-        /// under the user profile directory on Windows). If this value is non-empty
-        /// then it must be an absolute path. When using the Chrome runtime this value
-        /// will be ignored in favor of the |root_cache_path| value.
+        /// The location where user data such as the Widevine CDM module and spell
+        /// checking dictionary files will be stored on disk. If this value is empty
+        /// then the default platform-specific user data directory will be used
+        /// ("~/.config/cef_user_data" directory on Linux, "~/Library/Application
+        /// Support/CEF/User Data" directory on MacOS, "AppData\Local\CEF\User Data"
+        /// directory under the user profile directory on Windows). If this value is
+        /// non-empty then it must be an absolute path. When using the Chrome runtime
+        /// this value will be ignored in favor of the |root_cache_path| value.
         /// </summary>
         public string UserDataPath { get; set; }
 
@@ -164,9 +164,9 @@
         /// Value that will be inserted as the product portion of the default
         /// User-Agent string. If empty the Chromium product version will be used. If
         /// |userAgent| is specified this value will be ignored. Also configurable
-        /// using the "product-version" command-line switch.
+        /// using the "user-agent-product" command-line switch.
         /// </summary>
-        public string ProductVersion { get; set; }
+        public string UserAgentProduct { get; set; }
 
         /// <summary>
         /// The locale string that will be passed to WebKit. If empty the default
@@ -180,7 +180,7 @@
         /// <summary>
         /// The directory and file name to use for the debug log. If empty a default
         /// log file name and location will be used. On Windows and Linux a "debug.log"
-        /// file will be written in the main executable directory. On Mac OS X a
+        /// file will be written in the main executable directory. On MacOS a
         /// "~/Library/Logs/[app name]_debug.log" file will be written where [app name]
         /// is the name of the main app executable. Also configurable using the
         /// "log-file" command-line switch.
@@ -206,7 +206,7 @@
         /// <summary>
         /// The fully qualified path for the resources directory. If this value is
         /// empty the *.pak files must be located in the module directory on
-        /// Windows/Linux or the app bundle Resources directory on Mac OS X. If this
+        /// Windows/Linux or the app bundle Resources directory on MacOS. If this
         /// value is non-empty then it must be an absolute path. Also configurable
         /// using the "resources-dir-path" command-line switch.
         /// </summary>
@@ -216,8 +216,9 @@
         /// The fully qualified path for the locales directory. If this value is empty
         /// the locales directory must be located in the module directory. If this
         /// value is non-empty then it must be an absolute path. This value is ignored
-        /// on Mac OS X where pack files are always loaded from the app bundle
-        /// Resources directory. Also configurable using the "locales-dir-path"
+        /// on MacOS where pack files are always loaded from the app bundle Resources
+        /// directory. Also configurable using the "locales-dir-path" command-line
+        /// switch.
         /// </summary>
         public string LocalesDirPath { get; set; }
 
@@ -247,17 +248,6 @@
         /// "uncaught-exception-stack-size" command-line switch.
         /// </summary>
         public int UncaughtExceptionStackSize { get; set; }
-
-        /// <summary>
-        /// Set to true (1) to ignore errors related to invalid SSL certificates.
-        /// Enabling this setting can lead to potential security vulnerabilities like
-        /// "man in the middle" attacks. Applications that load content from the
-        /// internet should not enable this setting. Also configurable using the
-        /// "ignore-certificate-errors" command-line switch. Can be overridden for
-        /// individual CefRequestContext instances via the
-        /// CefRequestContextSettings.ignore_certificate_errors value.
-        /// </summary>
-        public bool IgnoreCertificateErrors { get; set; }
 
         /// <summary>
         /// Background color used for the browser before a document is loaded and when
@@ -322,7 +312,7 @@
             ptr->persist_session_cookies = PersistSessionCookies ? 1 : 0;
             ptr->persist_user_preferences = PersistUserPreferences ? 1 : 0;
             cef_string_t.Copy(UserAgent, &ptr->user_agent);
-            cef_string_t.Copy(ProductVersion, &ptr->product_version);
+            cef_string_t.Copy(UserAgentProduct, &ptr->user_agent_product);
             cef_string_t.Copy(Locale, &ptr->locale);
             cef_string_t.Copy(LogFile, &ptr->log_file);
             ptr->log_severity = LogSeverity;
@@ -332,7 +322,6 @@
             ptr->pack_loading_disabled = PackLoadingDisabled ? 1 : 0;
             ptr->remote_debugging_port = RemoteDebuggingPort;
             ptr->uncaught_exception_stack_size = UncaughtExceptionStackSize;
-            ptr->ignore_certificate_errors = IgnoreCertificateErrors ? 1 : 0;
             ptr->background_color = BackgroundColor.ToArgb();
             cef_string_t.Copy(AcceptLanguageList, &ptr->accept_language_list);
             cef_string_t.Copy(CookieableSchemesList, &ptr->cookieable_schemes_list);
@@ -350,7 +339,7 @@
             libcef.string_clear(&ptr->root_cache_path);
             libcef.string_clear(&ptr->user_data_path);
             libcef.string_clear(&ptr->user_agent);
-            libcef.string_clear(&ptr->product_version);
+            libcef.string_clear(&ptr->user_agent_product);
             libcef.string_clear(&ptr->locale);
             libcef.string_clear(&ptr->log_file);
             libcef.string_clear(&ptr->javascript_flags);

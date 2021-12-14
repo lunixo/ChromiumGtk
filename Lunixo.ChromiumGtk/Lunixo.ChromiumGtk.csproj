@@ -6,14 +6,14 @@
         <RootNamespace>Lunixo.ChromiumGtk</RootNamespace>
         <PackageId>Lunixo.ChromiumGtk</PackageId>
         <IncludeBuildOutput>true</IncludeBuildOutput>
-        <Version>2.0.4430.1-beta</Version>
+        <Version>2.0.4638.1</Version>
         <Authors>Lunixo</Authors>
         <Company>Lunixo</Company>
         <PackageTags>CEF;Chromium;GTK;GtkSharp</PackageTags>
         <Description>
             Chromium Embedded Framework (CEF) WebView for GtkSharp
         </Description>
-        <PackageVersion>2.0.4430.4</PackageVersion>
+        <PackageVersion>2.0.4638.1</PackageVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
