@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Lunixo.ChromiumGtk.Linux64" Version="2.0.4430.4" />
+      <PackageReference Include="Lunixo.ChromiumGtk.Linux64" Version="2.0.4638.1" />
       <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
     </ItemGroup>
 
