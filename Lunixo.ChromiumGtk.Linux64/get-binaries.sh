@@ -15,5 +15,5 @@ echo "Stripping binaries ..."
 strip binary/libcef.so
 strip binary/libEGL.so
 strip binary/libGLESv2.so
-strip binary/swiftshader/libEGL.so
-strip binary/swiftshader/libGLESv2.so
+strip binary/libvk_swiftshader.so
+strip binary/libvulkan.so.1

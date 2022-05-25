@@ -57,6 +57,14 @@
                 <PackagePath>binaries</PackagePath>
             </TfmSpecificPackageFile>
 
+            <TfmSpecificPackageFile Include="binary/libvk_swiftshader.so">
+                <PackagePath>binaries</PackagePath>
+            </TfmSpecificPackageFile>
+
+            <TfmSpecificPackageFile Include="binary/libvulkan.so.1">
+                <PackagePath>binaries</PackagePath>
+            </TfmSpecificPackageFile>
+            
             <TfmSpecificPackageFile Include="binary/snapshot_blob.bin">
                 <PackagePath>binaries</PackagePath>
             </TfmSpecificPackageFile>
@@ -65,17 +73,14 @@
                 <PackagePath>binaries</PackagePath>
             </TfmSpecificPackageFile>
 
+            <TfmSpecificPackageFile Include="binary/vk_swiftshader_icd.json">
+                <PackagePath>binaries</PackagePath>
+            </TfmSpecificPackageFile>
+            
             <TfmSpecificPackageFile Include="binary/locales/en-US.pak">
                 <PackagePath>binaries/locales</PackagePath>
             </TfmSpecificPackageFile>
-
-            <TfmSpecificPackageFile Include="binary/swiftshader/libEGL.so">
-                <PackagePath>binaries/swiftshader</PackagePath>
-            </TfmSpecificPackageFile>
-
-            <TfmSpecificPackageFile Include="binary/swiftshader/libGLESv2.so">
-                <PackagePath>binaries/swiftshader</PackagePath>
-            </TfmSpecificPackageFile>
+            
         </ItemGroup>
     </Target>
     
