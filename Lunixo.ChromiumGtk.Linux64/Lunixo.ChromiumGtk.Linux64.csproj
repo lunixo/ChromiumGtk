@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <PackageId>Lunixo.ChromiumGtk.Linux64</PackageId>
-        <Version>2.0.4638.1</Version>
+        <Version>2.0.5005.1</Version>
         <Authors>Lunixo</Authors>
         <Company>Lunixo</Company>
         <PackageTags>CEF;Chromium;GTK;GtkSharp</PackageTags>
@@ -11,7 +11,7 @@
             Chromium Embedded Framework (CEF) WebView for GtkSharp binaries for Linux x64
         </Description>
         <IncludeBuildOutput>true</IncludeBuildOutput>
-        <PackageVersion>2.0.4638.1</PackageVersion>
+        <PackageVersion>2.0.5005.1-beta</PackageVersion>
     </PropertyGroup>
 
     <PropertyGroup>

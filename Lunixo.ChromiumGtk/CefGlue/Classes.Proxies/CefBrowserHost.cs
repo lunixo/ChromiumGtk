@@ -205,13 +205,12 @@
         /// selectable file types and may any combination of (a) valid lower-cased MIME
         /// types (e.g. "text/*" or "image/*"), (b) individual file extensions (e.g.
         /// ".txt" or ".png"), or (c) combined description and file extension delimited
-        /// using "|" and ";" (e.g. "Image Types|.png;.gif;.jpg").
-        /// |selected_accept_filter| is the 0-based index of the filter that will be
-        /// selected by default. |callback| will be executed after the dialog is
-        /// dismissed or immediately if another dialog is already pending. The dialog
-        /// will be initiated asynchronously on the UI thread.
+        /// using "|" and ";" (e.g. "Image Types|.png;.gif;.jpg"). |callback| will be
+        /// executed after the dialog is dismissed or immediately if another dialog is
+        /// already pending. The dialog will be initiated asynchronously on the UI
+        /// thread.
         /// </summary>
-        public void RunFileDialog(CefFileDialogMode mode, string title, string defaultFilePath, string[] acceptFilters, int selectedAcceptFilter, CefRunFileDialogCallback callback)
+        public void RunFileDialog(CefFileDialogMode mode, string title, string defaultFilePath, string[] acceptFilters, CefRunFileDialogCallback callback)
         {
             if (callback == null) throw new ArgumentNullException("callback");
 
@@ -222,7 +221,7 @@
                 var n_defaultFilePath = new cef_string_t(defaultFilePath_ptr, defaultFilePath != null ? defaultFilePath.Length : 0);
                 var n_acceptFilters = cef_string_list.From(acceptFilters);
 
-                cef_browser_host_t.run_file_dialog(_self, mode, &n_title, &n_defaultFilePath, n_acceptFilters, selectedAcceptFilter, callback.ToNative());
+                cef_browser_host_t.run_file_dialog(_self, mode, &n_title, &n_defaultFilePath, n_acceptFilters, callback.ToNative());
 
                 libcef.string_list_free(n_acceptFilters);
             }
@@ -301,23 +300,21 @@
         }
 
         /// <summary>
-        /// Search for |searchText|. |identifier| must be a unique ID and these IDs
-        /// must strictly increase so that newer requests always have greater IDs than
-        /// older requests. If |identifier| is zero or less than the previous ID value
-        /// then it will be automatically assigned a new valid ID. |forward| indicates
-        /// whether to search forward or backward within the page. |matchCase|
-        /// indicates whether the search should be case-sensitive. |findNext| indicates
-        /// whether this is the first request or a follow-up. The CefFindHandler
-        /// instance, if any, returned via CefClient::GetFindHandler will be called to
-        /// report find results.
+        /// Search for |searchText|. |forward| indicates whether to search forward or
+        /// backward within the page. |matchCase| indicates whether the search should
+        /// be case-sensitive. |findNext| indicates whether this is the first request
+        /// or a follow-up. The search will be restarted if |searchText| or |matchCase|
+        /// change. The search will be stopped if |searchText| is empty. The
+        /// CefFindHandler instance, if any, returned via CefClient::GetFindHandler
+        /// will be called to report find results.
         /// </summary>
-        public void Find(int identifier, string searchText, bool forward, bool matchCase, bool findNext)
+        public void Find(string searchText, bool forward, bool matchCase, bool findNext)
         {
             fixed (char* searchText_ptr = searchText)
             {
                 var n_searchText = new cef_string_t(searchText_ptr, searchText.Length);
 
-                cef_browser_host_t.find(_self, identifier, &n_searchText, forward ? 1 : 0, matchCase ? 1 : 0, findNext ? 1 : 0);
+                cef_browser_host_t.find(_self, &n_searchText, forward ? 1 : 0, matchCase ? 1 : 0, findNext ? 1 : 0);
             }
         }
 

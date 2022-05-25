@@ -175,7 +175,7 @@ namespace Xilium.CefGlue.Interop
         #if !DEBUG
         [SuppressUnmanagedCodeSecurity]
         #endif
-        private delegate void run_file_dialog_delegate(cef_browser_host_t* self, CefFileDialogMode mode, cef_string_t* title, cef_string_t* default_file_path, cef_string_list* accept_filters, int selected_accept_filter, cef_run_file_dialog_callback_t* callback);
+        private delegate void run_file_dialog_delegate(cef_browser_host_t* self, CefFileDialogMode mode, cef_string_t* title, cef_string_t* default_file_path, cef_string_list* accept_filters, cef_run_file_dialog_callback_t* callback);
         
         [UnmanagedFunctionPointer(libcef.CEF_CALLBACK)]
         #if !DEBUG
@@ -205,7 +205,7 @@ namespace Xilium.CefGlue.Interop
         #if !DEBUG
         [SuppressUnmanagedCodeSecurity]
         #endif
-        private delegate void find_delegate(cef_browser_host_t* self, int identifier, cef_string_t* searchText, int forward, int matchCase, int findNext);
+        private delegate void find_delegate(cef_browser_host_t* self, cef_string_t* searchText, int forward, int matchCase, int findNext);
         
         [UnmanagedFunctionPointer(libcef.CEF_CALLBACK)]
         #if !DEBUG
@@ -718,7 +718,7 @@ namespace Xilium.CefGlue.Interop
         private static IntPtr _pf;
         private static run_file_dialog_delegate _df;
         
-        public static void run_file_dialog(cef_browser_host_t* self, CefFileDialogMode mode, cef_string_t* title, cef_string_t* default_file_path, cef_string_list* accept_filters, int selected_accept_filter, cef_run_file_dialog_callback_t* callback)
+        public static void run_file_dialog(cef_browser_host_t* self, CefFileDialogMode mode, cef_string_t* title, cef_string_t* default_file_path, cef_string_list* accept_filters, cef_run_file_dialog_callback_t* callback)
         {
             run_file_dialog_delegate d;
             var p = self->_run_file_dialog;
@@ -728,7 +728,7 @@ namespace Xilium.CefGlue.Interop
                 d = (run_file_dialog_delegate)Marshal.GetDelegateForFunctionPointer(p, typeof(run_file_dialog_delegate));
                 if (_pf == IntPtr.Zero) { _df = d; _pf = p; }
             }
-            d(self, mode, title, default_file_path, accept_filters, selected_accept_filter, callback);
+            d(self, mode, title, default_file_path, accept_filters, callback);
         }
         
         // StartDownload
@@ -803,7 +803,7 @@ namespace Xilium.CefGlue.Interop
         private static IntPtr _p14;
         private static find_delegate _d14;
         
-        public static void find(cef_browser_host_t* self, int identifier, cef_string_t* searchText, int forward, int matchCase, int findNext)
+        public static void find(cef_browser_host_t* self, cef_string_t* searchText, int forward, int matchCase, int findNext)
         {
             find_delegate d;
             var p = self->_find;
@@ -813,7 +813,7 @@ namespace Xilium.CefGlue.Interop
                 d = (find_delegate)Marshal.GetDelegateForFunctionPointer(p, typeof(find_delegate));
                 if (_p14 == IntPtr.Zero) { _d14 = d; _p14 = p; }
             }
-            d(self, identifier, searchText, forward, matchCase, findNext);
+            d(self, searchText, forward, matchCase, findNext);
         }
         
         // StopFinding

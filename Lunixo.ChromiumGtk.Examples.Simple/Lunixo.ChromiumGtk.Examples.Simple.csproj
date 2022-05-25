@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Lunixo.ChromiumGtk.Linux64" Version="2.0.4638.1" />
+      <PackageReference Include="Lunixo.ChromiumGtk.Linux64" Version="2.0.5005.1-beta" />
     </ItemGroup>
 
 </Project>
