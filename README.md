@@ -1,3 +1,10 @@
+# _This project is no longer being maintained!_
+
+Similar active projects:
+* https://github.com/OutSystems/CefGlue
+* https://github.com/chromelyapps/Chromely
+
+
 # ChromiumGtk
 
 ChromiumGtk is a WebView for GtkSharp using Chromium Embedded Framework (CEF) and CefGlue.
